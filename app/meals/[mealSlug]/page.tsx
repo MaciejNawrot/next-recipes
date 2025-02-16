@@ -9,18 +9,23 @@ type MealsSlugPageParams = {
   }>;
 }
 
-export async function generateMetadata({ params }: MealsSlugPageParams) {
-  const { mealSlug } = await params;
-  const meal = await getMealBySlug(mealSlug);
+// export async function generateMetadata({ params }: MealsSlugPageParams) {
+//   const { mealSlug } = await params;
+//   const meal = await getMealBySlug(mealSlug);
+//
+//   if (!meal) {
+//     notFound();
+//   }
+//
+//   return {
+//     title: meal.title,
+//     description: meal.summary,
+//   };
+// }
 
-  if (!meal) {
-    notFound();
-  }
-
-  return {
-    title: meal.title,
-    description: meal.summary,
-  };
+export const metadata = {
+  title: 'Meal Details',
+  description: 'Details of a meal',
 }
 
 export default async function MealsDetailsPage({ params }: MealsSlugPageParams) {
