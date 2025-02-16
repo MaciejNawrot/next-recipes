@@ -13,11 +13,11 @@ const mealSchema = z.object({
   instructions: z.string().min(1, "Instructions are required."),
   creator: z.string().min(1, "Creator name is required."),
   creator_email: z.string().min(1, "Email is required.").email("Invalid email format."),
-  image: z.instanceof(File, { message: "Image file is required." }), // Ensure image is a file
+  image: z.instanceof(File, { message: "Image file is required." }),
 });
 
 export async function shareMeal(
-  prevState: { message: string }, // Ensure the state structure is correct
+  prevState: { message: string },
   formData: FormData
 ) {
   const meal = {
