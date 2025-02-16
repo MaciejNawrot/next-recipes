@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import sql from 'better-sqlite3';
-import sligify from 'slugify';
+import slugify from 'slugify';
 import xss from 'xss';
 import { Meal } from "@/types/Meal";
 
@@ -18,7 +18,7 @@ export async function getMealBySlug(slug: string): Promise<Meal> {
 }
 
 export async function saveMeal(meal: Meal) {
-  meal.slug = sligify(meal.title, { lower: true });
+  meal.slug = slugify(meal.title, { lower: true });
   meal.instructions = xss(meal.instructions);
 
   const image = meal.image as unknown as File;
